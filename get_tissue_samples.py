@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 
+
 def initialize():
     """
     An argument parser as an initializing function
@@ -54,6 +55,7 @@ def get_tissue_data(data, tissue, output):
     f.close()
     o.close()
 
+
 def main():
     args = initialize()
 
@@ -61,6 +63,7 @@ def main():
         print('Input dataset not found!')
 
     get_tissue_data(args.data, args.tissue, args.output)
+
 
 if __name__ == '__main__':
     main()

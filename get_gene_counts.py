@@ -3,6 +3,7 @@ import sys
 import gzip
 import argparse
 
+
 def initialize():
     """
     An argument parser as an initializing function
@@ -31,6 +32,7 @@ def initialize():
     args_parse = parser.parse_args()
 
     return args_parse
+
 
 def get_gene_data(data, gene, output):
     o = open(output, 'w')
@@ -63,6 +65,7 @@ def get_gene_data(data, gene, output):
     f.close()
     o.close()
 
+
 def main():
     args = initialize()
 
@@ -71,7 +74,7 @@ def main():
         sys.exit(1)
 
     get_gene_data(args.data, args.gene, args.output)
-    
+
 
 if __name__ == '__main__':
     main()

@@ -1,8 +1,9 @@
 import os
 import sys
 import argparse
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 from matplotlib import rc
+
 
 def initialize():
     """
@@ -35,6 +36,7 @@ def initialize():
 
     return args_parse
 
+
 def boxplot(data, meta_file, y_label, title, output):
     plt.subplots(nrows=len(data), figsize=(10, 20))
     for i in range(len(data)):
@@ -48,6 +50,7 @@ def boxplot(data, meta_file, y_label, title, output):
             plt.xlabel('Gene')
 
     plt.savefig(output)
+
 
 def main():
     args = initialize()
@@ -77,7 +80,7 @@ def main():
 
     sample_dist = {}   # (ID, tissue_group) pair
     gene_dist = {}     # (ID, counts) pair
-    
+
     data_all = []
     for i in range(len(args.tissue)):
         tissue_id = []
@@ -95,11 +98,13 @@ def main():
                 gene_id.append(l.split()[0])
                 gene_dist[l.split()[0]] = int(l.split()[1])
             intersection_id = [id for id in tissue_id if id in gene_id]
-            counts = [gene_dist[intersection_id[k]] for k in range(len(intersection_id))]
+            counts = [gene_dist[intersection_id[k]]
+                      for k in range(len(intersection_id))]
             counts_all.append(counts)    # counts of each gene type
-        data_all.append(counts_all)     
+        data_all.append(counts_all)
 
     boxplot(data_all, args.gene, 'Count', args.tissue, args.output)
+
 
 if __name__ == '__main__':
     main()

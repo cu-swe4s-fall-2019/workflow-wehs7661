@@ -3,6 +3,7 @@ import random
 import os
 import get_tissue_samples
 
+
 class TestGetTissueSamples(unittest.TestCase):
     def test_get_tissue_data(self):
         tissue = 'Blood'
@@ -12,6 +13,7 @@ class TestGetTissueSamples(unittest.TestCase):
         get_tissue_samples.get_tissue_data(data, tissue, output)
         self.assertTrue(os.path.exists('test.txt'))
         os.remove('test.txt')
+
 
 if __name__ == '__main__':
     unittest.main()
